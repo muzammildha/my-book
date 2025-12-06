@@ -33,10 +33,10 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
       type: 'category',
       label: 'Modules',
       items: [
-        'module-01/index',
-        'module2/index',
-        'module3/index',
-        'module4/index',
+        'module-01/ROS 2 Fundamentals',
+        'module2/Digital Twin Simulation',
+        'module3/NVIDIA Isaac Platform',
+        'module4/Vision-Language-Action Systems',
       ],
     },
     {
