@@ -12,16 +12,42 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
  Create as many sidebars as you want.
  */
-const sidebars: SidebarsConfig = {
+ const sidebars = {
   tutorialSidebar: [
-    'introduction-to-physical-ai/index.mdx',
-    'basics-of-humanoid-robotics/index.mdx',
-    'module-01/index.mdx',
-    'module-02/index.mdx',
-    'module-03/index.mdx',
-    'module-04/index.mdx',
-    'capstone-ai-robot-pipeline/index.mdx',
+    {
+      type: 'category',
+      label: 'Introduction',
+      items: [
+        'intro',
+        'introduction-to-physical-ai',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Basics',
+      items: [
+        'basics-of-humanoid-robotics',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Modules',
+      items: [
+        'module-01/index',
+        'module2/index',
+        'module3/index',
+        'module4/index',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Capstone',
+      items: [
+        'capstone-ai-robot-pipeline',
+      ],
+    },
   ],
 };
 
 export default sidebars;
+
