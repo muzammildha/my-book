@@ -1,20 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-# Assuming these modules will be created later
-# from .api import endpoints
-# from .services import rag_service
+from .api.endpoints import router as api_router
+from .services.rag_service import RAGService
+import os
 
 app = FastAPI(
     title="RAG Chatbot Backend for Physical AI Textbook",
-    description="FastAPI backend for the Retrieval-Augmented Generation chatbot, personalization, and translation features.",
     version="1.0.0",
 )
 
-# Configure CORS
 origins = [
-    "http://localhost:3000",  # Docusaurus frontend development server
-    # Add your GitHub Pages URL here in production, e.g., "https://your-github-username.github.io"
+    "http://localhost:3000",
 ]
 
 app.add_middleware(
@@ -25,9 +21,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/", tags=["Health Check"])
-async def read_root():
-    return {"message": "RAG Chatbot Backend is running"}
+service = RAGService()
 
-# Include API endpoints (uncomment when created)
-# app.include_router(endpoints.router)
+@app.on_event("startup")
+async def load_documents():
+    # Load MDX documents at startup
+    docs_path = "docs"
+    for file in os.listdir(docs_path):
+        if file.endswith(".mdx"):
+            with open(f"{docs_path}/{file}", "r", encoding="utf-8") as f:
+                content = f.read()
+                service.add_document(content)
+
+    print("📚 All MDX files indexed into vector store.")
+
+@app.get("/")
+async def health_check():
+    return {"message": "Backend is running"}
+
+# Add RAG routes
+app.include_router(api_router, prefix="/api")
