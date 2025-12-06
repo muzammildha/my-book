@@ -1,22 +1,40 @@
-import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import { SidebarConfig } from '@docusaurus/plugin-content-docs/src/sidebars/types.js';
 
-const sidebars: SidebarsConfig = {
+const sidebars: SidebarConfig = {
   tutorialSidebar: [
-    'index', // homepage
-    'intro',
-    'introduction-to-physical-ai',
-    'basics-of-humanoid-robotics',
+    // Introduction section
     {
       type: 'category',
-      label: 'Modules',
+      label: 'Introduction',
       items: [
-        'module-01/index', // ROS 2 Fundamentals
-        'module2/index',   // Digital Twin Simulation
-        'module3/index',   // NVIDIA Isaac Platform
-        'module4/index',   // Vision-Language-Action Systems
+        'index',                       // main index                        // tutorial intro
+        'introduction-to-physical-ai',  // intro to Physical AI
       ],
     },
-    'capstone-ai-robot-pipeline',
+
+    // Basics of Humanoid Robotics
+    {
+      type: 'doc',
+      id: 'basics-of-humanoid-robotics',
+    },
+    // Modules
+    {
+      type: 'category',
+      label: 'Chapter 2: Modules',
+      items: [
+        'module1/index',
+        'module2/index',
+        'module3/index',
+        'module4/index',
+      ],
+    },
+
+    // Capstone Pipeline
+    {
+      type: 'doc',
+      id: 'capstone-ai-robot-pipeline',
+    },
+
   ],
 };
 
