@@ -14,13 +14,13 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  */
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
-    'introduction-to-physical-ai',
-    'basics-of-humanoid-robotics',
-    'module-01',
-    'module2',
-    'module3',
-    'module4',
-    'capstone-ai-robot-pipeline',
+    'introduction-to-physical-ai/index.mdx',
+    'basics-of-humanoid-robotics/index.mdx',
+    'module-01/index.mdx',
+    'module-02/index.mdx',
+    'module-03/index.mdx',
+    'module-04/index.mdx',
+    'capstone-ai-robot-pipeline/index.mdx',
   ],
 };
 
