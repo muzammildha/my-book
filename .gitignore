@@ -1,0 +1,26 @@
+# Gitignore for Physical AI Textbook Project
+
+# Docusaurus build output
+physical-ai-textbook/build/
+physical-ai-textbook/.docusaurus/
+physical-ai-textbook/node_modules/
+
+# FastAPI virtual environment
+rag_chatbot/venv/
+
+# Environment variables
+.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Python bytecode
+**/*.pyc
+__pycache__/
+
+# macOS specific files
+.DS_Store
+
+# Logs
+*.log

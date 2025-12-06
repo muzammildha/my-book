@@ -1,0 +1,28 @@
+# Byte-code files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+.flaskenv
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Test reports
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Qdrant local data (if any)
+.qdrant_storage/
+
+# Any logs
+*.log

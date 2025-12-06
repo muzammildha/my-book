@@ -1,0 +1,47 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Set a branch to deploy from
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged
+    defaults:
+      run:
+        working-directory: physical-ai-textbook
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Docusaurus requires full history for `editUrl` feature
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Docusaurus website
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./physical-ai-textbook/build
+          # Replace 'gh-pages' with the branch you want to deploy to
+          publish_branch: gh-pages
+          # CNAME: your-custom-domain.com (uncomment and replace if using a custom domain)
