@@ -1,0 +1,25 @@
+{
+  "name": "my-book",
+  "version": "1.0.0",
+  "description": "A clean, professional, AI-native textbook with an integrated RAG chatbot — built using **Docusaurus** (frontend) and **FastAPI** (backend).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muzammildha/my-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/muzammildha/my-book/issues"
+  },
+  "homepage": "https://github.com/muzammildha/my-book#readme",
+  "dependencies": {
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2"
+  }
+}
