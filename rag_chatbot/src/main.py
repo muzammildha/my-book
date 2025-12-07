@@ -4,6 +4,8 @@ from .api.endpoints import router as api_router
 from .services.rag_service import RAGService
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 app = FastAPI(
     title="RAG Chatbot Backend for Physical AI Textbook",
     version="1.0.0",
@@ -11,6 +13,7 @@ app = FastAPI(
 
 origins = [
     "http://localhost:3000",
+    "*"  # Allow all for deployment
 ]
 
 app.add_middleware(
@@ -25,15 +28,26 @@ service = RAGService()
 
 @app.on_event("startup")
 async def load_documents():
-    # Load MDX documents at startup
-    docs_path = "docs"
-    for file in os.listdir(docs_path):
-        if file.endswith(".mdx"):
-            with open(f"{docs_path}/{file}", "r", encoding="utf-8") as f:
-                content = f.read()
-                service.add_document(content)
+    # Correct absolute path to docs/
+    docs_path = os.path.join(BASE_DIR, "docs")
 
-    print("📚 All MDX files indexed into vector store.")
+    if not os.path.exists(docs_path):
+        print(f"⚠️ Docs folder not found at: {docs_path}")
+        return
+
+    files = os.listdir(docs_path)
+    mdx_files = [f for f in files if f.endswith(".mdx")]
+
+    if not mdx_files:
+        print("⚠️ No MDX files found in docs/. RAG will be empty.")
+
+    for file in mdx_files:
+        file_path = os.path.join(docs_path, file)
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            service.add_document(content)
+
+    print(f"📚 Indexed {len(mdx_files)} MDX files into vector store.")
 
 @app.get("/")
 async def health_check():
