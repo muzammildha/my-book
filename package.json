@@ -4,6 +4,9 @@
   "description": "A clean, professional, AI-native textbook with an integrated RAG chatbot — built using **Docusaurus** (frontend) and **FastAPI** (backend).",
   "main": "index.js",
   "scripts": {
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
