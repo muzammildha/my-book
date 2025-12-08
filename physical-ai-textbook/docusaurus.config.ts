@@ -78,6 +78,11 @@ const config: Config = {
           position: 'right',
         },
         {
+          to: '/ask-ai',
+          label: 'Ask AI about book',
+          position: 'right',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
