@@ -63,7 +63,7 @@ const config: Config = {
       title: 'Physical AI & Humanoid Robotics',
       logo: {
         alt: 'Physical AI & Humanoid Robotics Logo',
-        src: 'img/logo.svg', // Placeholder - User might want to replace
+        src: 'img/robot_logo.svg', // Updated logo for a cooler look
       },
       items: [
         {
